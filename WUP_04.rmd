@@ -83,9 +83,12 @@ plot(TukeyHSD(model1))
 print(TukeyHSD(model1))
 ```
 
-We are given evidence that there is a difference in the test scores for the WORDSUM in relation to the level of degree. The higher educational degree an individual had, the higher test score they were likely to get. We know this by seeing if there is an interval of 0 in the testing/graph. If there is not, then there is no difference in the test scores; if there is then there is a difference in the test scores.
+We are given evidence that there is a difference in the test scores for the WORDSUM in relation to the level of degree. The higher educational degree an individual had, the higher test score they were likely to get. We know this by seeing if there is an interval of 0 in the testing/graph. If there is not an interval of 0, then there is no difference in the test scores; if there is an interval of 0, then there is a difference in the test scores.
 
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+
+Is there a difference in test results for the WORDSUM depending on the level of education? Yes, there is a difference in test scores based on education level. The graphical and numerical data display that on average the higher education degree a person had, the higher test score they were likely to receive. We also know there is a difference based on the P-value, that was under 0.05. This means we rejected the NULL hypothesis and determined there is a difference in the data. In conclusion, the test scores for the WORDSUM differed depending on the level of education.
