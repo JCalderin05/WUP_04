@@ -29,7 +29,7 @@ $H_A$ There is a significant difference in average score on the WORDSUM test bet
 <!--Mention that you intend to use chatGPT to the greatest extent possible. Give credit to chatGPT when you use it to create code in your report. Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
 
-Our response variable is "WORDSUM" which is numerical. Our predictor variable is "DEGREE" which is categorical. We will be using the Numerical~Cat helper file. 
+Our response variable is "WORDSUM" which is a numerical test result. Our predictor variable is "DEGREE" which is a categorical. We will be using the Numerical~Cat helper file and chatGPT. 
 
 # Results
 
@@ -50,14 +50,40 @@ ggplot(data = GSS , aes(x = DEGREE, y = WORDSUM)) +
   ggtitle("Box Plot of WORDSUM vs. DEGREE")
 ```
 
+This box plot shows us that the degree with the highest median WORDSUM test score is a graduate degree. The lowest median WORDSUM test score is a LT high school degree. Both junior college and bachelor degrees have the same median. 
 
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
+```{r}
+favstats(WORDSUM~DEGREE, data=GSS)
+```
+
+According to the chart, we can see that graduate degrees have the highest scoring average at around 10. The bachelor and junior college degrees both have an average around 9. The lower average scores belongs to LT high school and high school degrees at around 8.
+
+
+
 ## Inferential Results
 
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+
+
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSS)
+summary.aov(model1)
+```
+
+This shows the P value is less than 0.05, so we reject the null hypothesis. This indicates that there is a difference in WORDSUM tests in comparison to the level of degree. 
+
+
+
+```{r}
+plot(TukeyHSD(model1))
+print(TukeyHSD(model1))
+```
+
+We are given evidence that there is a difference in the test scores for the WORDSUM in relation to the level of degree. The higher educational degree an individual had, the higher test score they were likely to get. We know this by seeing if there is an interval of 0 in the testing/graph. If there is not, then there is no difference in the test scores; if there is then there is a difference in the test scores.
 
 
 # Discussion and Conclusion
